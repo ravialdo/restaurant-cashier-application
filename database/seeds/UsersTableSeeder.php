@@ -23,6 +23,5 @@ class UsersTableSeeder extends Seeder
             'updated_at' => now()
         ]);
 
-		$menu = factory(App\Menu::class, 10)->create();
 	}
 }

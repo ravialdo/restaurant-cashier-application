@@ -28,7 +28,9 @@
                     @include('layouts.navbars.navbar')
 
                     <div class="content">
+                        
                         @yield('content')
+                        
                     </div>
 
                     @include('layouts.footer')
@@ -101,7 +103,10 @@
 
         <script src="{{ asset('black') }}/js/black-dashboard.min.js?v=1.0.0"></script>
         <script src="{{ asset('black') }}/js/theme.js"></script>
-
+		<!-- Sweet Alert -->
+	    <script src="{{ asset('js') }}/sweetalert.min.js"></script>
+		@include('sweet::alert')
+		
         @stack('js')
 
         <script>

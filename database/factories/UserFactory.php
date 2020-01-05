@@ -19,7 +19,6 @@ use Illuminate\Support\Str;
 $factory->define(App\Menu::class, function (Faker $faker) {
     return [
         'name_menu' => $faker->word,
-	   'image_menu' => $faker->imageUrl($width = 320, $height = 180),
         'price' => $faker->numberBetween($min = 1000, $max = 100000) ,
     ];
 });

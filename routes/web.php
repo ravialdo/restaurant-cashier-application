@@ -36,8 +36,13 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function(){
-	Route::resource('order','OrderController', ['ecpect' => ['index']]);
-     Route::get('order/run/{id}',['as' => 'order.run', 'uses' => 'OrderController@run']);
+	
 	Route::resource('menu','MenuController', ['expect' => ['index']]);
+
+     Route::resource('order','OrderController', ['expect' => ['index']]);
+   
+     Route::resource('transaction','TransactionController', ['expect' => ['index']]);
+      
+      Route::resource('customer','CustomerController', ['expect' => ['index']]);
 });
 

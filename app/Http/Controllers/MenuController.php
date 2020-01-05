@@ -40,7 +40,14 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Menu::create([
+			'name_menu' => $request->nama_menu,
+			'price' => $request->harga
+	   ]);
+	
+	    alert()->success('Data Berhasil di Tambahkan', 'Berhasil!')->persistent('Tutup');
+	     
+	    return redirect('menu');
     }
 
     /**
@@ -74,7 +81,14 @@ class MenuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Menu::find($id)->update([
+               'name_menu' => $request->nama_menu,
+               'price' => $request->harga
+         ]);
+         
+         alert()->success('Data Berhasil di Ubah', 'Berhasil!')->persistent('Tutup');
+         
+         return redirect('menu');
     }
 
     /**
@@ -85,6 +99,10 @@ class MenuController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Menu::find($id)->delete();
+
+	   alert()->success('Data Berhasil di Hapus', 'Berhasil!')->persistent('Tutup');
+
+	   return redirect('menu');
     }
 }

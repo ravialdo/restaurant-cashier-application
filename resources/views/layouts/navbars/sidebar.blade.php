@@ -11,16 +11,28 @@
                     <p>{{ __('Dashboard') }}</p>
                 </a>
             </li>
-		   <li @if ($pageSlug == 'order') class="active " @endif>
+            <li @if ($pageSlug == 'transaction') class="active " @endif>
+                <a href="{{ route('transaction.index') }}">
+                    <i class="tim-icons icon-money-coins"></i>
+                    <p>{{ __('Kelola Transaksi') }}</p>
+                </a>
+            </li>
+            <li @if ($pageSlug == 'order') class="active " @endif>
                 <a href="{{ route('order.index') }}">
                     <i class="tim-icons icon-user-run"></i>
-                    <p>{{ __('Pesanan') }}</p>
+                    <p>{{ __('Kelola Pesanan') }}</p>
+                </a>
+            </li>
+		   <li @if ($pageSlug == 'order') class="active " @endif>
+                <a href="{{ route('customer.index') }}">
+                    <i class="tim-icons icon-badge"></i>
+                    <p>{{ __('Kelola Pelanggan') }}</p>
                 </a>
             </li>
 			<li @if ($pageSlug == 'menu') class="active " @endif>
-                <a href="{{ route('order.index') }}">
+                <a href="{{ route('menu.index') }}">
                     <i class="tim-icons icon-notes"></i>
-                    <p>{{ __('Menu') }}</p>
+                    <p>{{ __('Kelola Menu & Meja') }}</p>
                 </a>
             </li>
             <li>

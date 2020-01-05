@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Transaction;
+use App\Customer;
+use App\Order;
+
 class TransactionController extends Controller
 {
     /**
@@ -13,7 +17,12 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+               'orders' => Order::where('status','baru')->get(),
+               'transactions' => Transaction::all()
+         ];
+         
+        return view('transaction.index', $data);
     }
 
     /**
@@ -34,7 +43,21 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $order = order::find($request->order_id);
+         
+         $order->update([
+                 'status' => 'selesai'
+         ]);
+      
+        $order->transaction()->create([
+             'total' => $request->total,
+             'pay'  => $request->jumlah_bayar,
+             'change_money' => $request->jumlah_kembalian
+         ]);
+         
+        alert()->success('Transaksi telah di proses', 'Berhasil')->persistent('Tutup');
+       
+        return redirect('transaction');
     }
 
     /**
@@ -45,7 +68,11 @@ class TransactionController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = [
+            'transaction' => Transaction::find($id)
+         ];
+         
+         return redirect('show', $data);
     }
 
     /**
@@ -79,6 +106,15 @@ class TransactionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $transaction = Transaction::find($id)->delete();
+      
+      if($transaction)
+         {
+            alert()->success('Data Berhasil di Hapus', 'Berhasil!')->persistent('Tutup');
+         } else {
+            alert()->error('Data Gagal di Hapus', 'Gagal!')->persistent('Tutup');
+         }
+         
+         return redirect()->back();
     }
 }

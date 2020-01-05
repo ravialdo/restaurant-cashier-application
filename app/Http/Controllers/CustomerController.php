@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Customer;
+use App\Menu;
+use App\Order;
+use App\Transaction;
+
 class CustomerController extends Controller
 {
     /**
@@ -13,7 +18,13 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'customers' => Customer::paginate(10),
+            'menus' => Menu::all(),
+            'orders' => Order::all()
+        ];
+      
+        return view('customer.index', $data);
     }
 
     /**
@@ -34,7 +45,24 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $customer = Customer::create([
+            'customer_name' => $request->nama_pelanggan,
+            'table_number' => $request->nomor_meja,
+            'gender' => $request->jenis_kelamin,
+            'number_phone' => $request->nomor_hp,
+            'address' => $request->alamat
+         ]);
+         
+         $customer->order()->create([
+            'menu_id' => $request->id_menu,
+            'amount' => $request->jumlah,
+            'user_id' => auth()->user()->id,
+            'status' => 'baru'
+         ]);
+         
+         alert()->success('Data Berhasil di Tambahkan', 'Berhasil!')->persistent('Tutup');
+   
+         return redirect('customer');
     }
 
     /**
@@ -79,6 +107,15 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        //
+         $customer = Customer::find($id);
+         
+         $customer->order()->delete();
+         
+         if($customer) :
+              alert()->success('Data Berhasil di Hapus', 'Berhasil!')->persistent('Tutup');
+         else :
+               alert()->error('Data Gagal di Hapus', 'Gagal!')->persistent('Tutup');
+         endif;
+        return redirect('customer');
     }
 }

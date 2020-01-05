@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Alert;
 
 use App\Menu;
 use App\Order;
@@ -16,6 +17,8 @@ class PageController extends Controller
 		$data = [
 			'menus' => 	Menu::paginate(6)
 		];
+		
+		alert()->info('Diaplikasi simkas kami!', 'Selamat Datang!')->persistent('close');
 		
 		return view('welcome', $data);
 	}

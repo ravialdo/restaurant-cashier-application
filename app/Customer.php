@@ -16,8 +16,8 @@ class Customer extends Model
 	* @return void
 	*/
 	
-	public function orders(){
-		return $this->hasMany(Order::class);
+	public function order(){
+		return $this->hasOne(Order::class);
 	}
 
 }

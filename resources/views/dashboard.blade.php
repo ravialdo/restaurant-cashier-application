@@ -1,6 +1,12 @@
 @extends('layouts.app', ['pageSlug' => 'dashboard'])
 
 @section('content')
+<nav aria-label="breadcrumb" role="navigation">
+   <ol class="breadcrumb">  
+       <li class="breadcrumb-item active">Dashboard</li>
+      </ol>
+</nav>
+
     <div class="row">
         <div class="col-12">
             <div class="card card-chart">
