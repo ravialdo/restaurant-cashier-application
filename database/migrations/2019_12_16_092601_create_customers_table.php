@@ -17,7 +17,7 @@ class CreateCustomersTable extends Migration
             $table->bigIncrements('id');
 		  $table->string('customer_name',50);
 		  $table->string('table_number',15);
-		  $table->boolean('gender');
+		  $table->bigInteger('gender_id');
 		  $table->string('number_phone',13);
 		  $table->string('address',95);
             $table->timestamps();

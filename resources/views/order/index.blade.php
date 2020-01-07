@@ -47,8 +47,9 @@
                           <div class="form-group">				
 						<select  name="jenis_kelamin" class="form-control">
 						    <option value="">Pilih Jenis Kelamin</option>
-							<option value="1">Laki - Laki</option>
-							<option value="0">Perempuan</option>																	
+                                    @foreach($genders as $gender)
+							<option value="{{ $gender->id }}">{{ $gender->gender_name }}</option>
+							@endforeach															
 						</select>
 					</div>
                                                                      
