@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Menu;
+use App\Table;
 
 class MenuController extends Controller
 {
@@ -17,8 +18,9 @@ class MenuController extends Controller
     {
 	   $data = [
 			'menus' => Menu::paginate(10),
+      'tables' => Table::paginate(10)
 	   ];
-	
+
         return view('menu.index', $data);
     }
 
@@ -44,9 +46,9 @@ class MenuController extends Controller
 			'name_menu' => $request->nama_menu,
 			'price' => $request->harga
 	   ]);
-	
+
 	    alert()->success('Data Berhasil di Tambahkan', 'Berhasil!')->persistent('Tutup');
-	     
+
 	    return redirect('menu');
     }
 
@@ -85,9 +87,9 @@ class MenuController extends Controller
                'name_menu' => $request->nama_menu,
                'price' => $request->harga
          ]);
-         
+
          alert()->success('Data Berhasil di Ubah', 'Berhasil!')->persistent('Tutup');
-         
+
          return redirect('menu');
     }
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Table;
+
 class TableController extends Controller
 {
     /**
@@ -34,7 +36,13 @@ class TableController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Table::create([
+          'table_name' => $request->nomor_meja
+        ]);
+
+        alert()->success('Data Berhasil di Tambahkan','Berhasil!')->persistent('Tutup');
+
+        return redirect()->back();
     }
 
     /**
@@ -79,6 +87,10 @@ class TableController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Table::find($id)->delete();
+
+        alert()->success('Data Berhasil di Hapus','Berhasil!')->persistent('Tutup');
+
+        return redirect()->back();
     }
 }
