@@ -171,20 +171,19 @@
 			</div>
 			<div class="card-body">
 				
-			<form method="post" action="{{ route('menu.create') }}">
+			<form method="post" action="{{ route('table.create') }}">
 		
 				@csrf
-				@method('put')
 				
 				<div class="pl-lg-4">
                          <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                      	      <input type="text" name="nama_meja" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Nama Meja') }}" value="{{ old('nama_meja') }}" required>
+                      	      <input type="text" name="nomor_meja" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Nomor Meja') }}" value="{{ old('nomor_meja') }}" required>
                        	      @include('alerts.feedback', ['field' => 'name'])
                	   	</div>
 				</div>
 						
 							
-				<button type="button" class="btn btn-simple btn-success float-right">
+				<button type="submit" class="btn btn-simple btn-success float-right">
 					<i class="tim-icons icon-simple-add"></i> Tambah
 				</button>
 		

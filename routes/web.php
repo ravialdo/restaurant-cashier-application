@@ -44,5 +44,7 @@ Route::group(['middleware' => 'auth'], function(){
      Route::resource('transaction','TransactionController', ['expect' => ['index']]);
       
       Route::resource('customer','CustomerController', ['expect' => ['index']]);
+      
+      Route::resource('table','TableController', ['expect' => ['index']]);
 });
 

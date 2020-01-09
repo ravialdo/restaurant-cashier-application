@@ -9,6 +9,7 @@ use App\Transaction;
 use App\Customer;
 use App\Gender;
 use App\Order;
+use App\Table;
 use App\Menu;
 
 class OrderController extends Controller
@@ -24,7 +25,8 @@ class OrderController extends Controller
                'customers' => Customer::all(),
 			'orders' => Order::paginate(10),
                'menus' => Menu::all(),
-               'genders' => Gender::all()
+               'genders' => Gender::all(),
+               'tables' => Table::all()
 	   ];
 	
         return view('order.index', $data);

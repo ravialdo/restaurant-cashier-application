@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder
             'updated_at' => now()
         ]);
       
-         DB::table('genders')->insert([
+        /* DB::table('genders')->insert([
             'gender_name' => 'Laki - Laki',
             'created_at' => now(),
             'updated_at' => now()
@@ -33,7 +33,7 @@ class UsersTableSeeder extends Seeder
             'gender_name' => 'Perempuan',
             'created_at' => now(),
             'updated_at' => now()
-         ]);
+         ]); */
 
 	}
 }

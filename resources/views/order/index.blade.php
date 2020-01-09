@@ -35,21 +35,27 @@
       
                         <div class="form-group">						
 						<select name="nomor_meja" class="form-control">																														
-							<option value="">Pilih Nomor Meja</option>
-							<option value="Meja 1">Meja 1</option>
-							<option value="Meja 2">Meja 2</option>
-							<option value="Meja 3">Meja 3</option>
-							<option value="Lesehan 1">Lesehan 1</option>
-							<option value="Lesehan 2">Lesehan 2</option>
+							@if(count($tables) >= 0)
+                                   <option value="">Nomor Meja Tidak Tersedia</option>
+                                     @else
+						    <option value="">Pilih Nomor Meja</option>
+                                    @foreach($tables as $table)
+							<option value="{{ $table->id }}">{{ $table->table_name }}</option>
+							@endforeach
+                                   @endif	
 						</select>
 					</div>
       
                           <div class="form-group">				
 						<select  name="jenis_kelamin" class="form-control">
+                                    @if(count($genders) >= 0)
+                                   <option value="">Jenis Kelamin Tidak Tersedia</option>
+                                     @else
 						    <option value="">Pilih Jenis Kelamin</option>
                                     @foreach($genders as $gender)
 							<option value="{{ $gender->id }}">{{ $gender->gender_name }}</option>
-							@endforeach															
+							@endforeach
+                                   @endif									
 						</select>
 					</div>
                                                                      
