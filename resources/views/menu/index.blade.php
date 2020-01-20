@@ -90,20 +90,45 @@
                  Rp.{{ $menu->price }}
                 </td>
                 <td>
-                  <form method="post" action="{{ route('menu.destroy', $menu)}}" autocomplete="off">
+                  
+               
+                      <button type="button" class="btn btn-simple btn-sm btn-danger mr-1" data-toggle="modal" data-target="#hapusMenu{{$menu->id}}">
+        		         <i class="tim-icons icon-trash-simple"></i>
+        		   </button>
+      
+                    <div class="modal fade" id="hapusMenu{{$menu->id}}" tabindex="-1" role="dialog">
+        					<div class="modal-dialog" role="document">
+        						<div class="modal-content" style="background-color:#212529;">
+        							<div class="modal-header">
+        								<h5 class="modal-title text-white text-uppercase">
+                                                   <i class="tim-icons icon-alert-circle-exc" style="margin-top:-4px;"></i> Peringatan
+                                             </h5>
+        							</div>
+        							<div class="modal-body">
+      
+                                          <p class="text-white">Yakin ingin menghapus data menu, penghapusan ini bersifat permanen!</p>
+      
+                                              <form method="post" action="{{ route('menu.destroy', $menu)}}" autocomplete="off">
 
-        					@csrf
-        					@method('delete')
+        					                        @csrf
+        					                        @method('delete')
 
-        					<button type="submit" class="btn btn-simple btn-sm btn-danger mr-1">
-        						<i class="tim-icons icon-trash-simple"></i>
-        					</button>
+        					                        <button type="submit" class="btn btn-simple btn-sm btn-success float-right">
+        					                           	Yakin
+        					                        </button>
+        					
+        				                     </form>
+      
+                                       </div>
+        						</div>
+        					</div>
+        				</div>
 
-        					<button type="button" class="btn btn-sm btn-simple btn-info mt-1 mt-md-0" data-toggle="modal" data-target="#modalEdit{{$menu->id}}">
+        					<button type="button" class="btn btn-sm btn-simple btn-info" data-toggle="modal" data-target="#modalEdit{{$menu->id}}">
         						<i class="tim-icons icon-pencil"> </i>
         					</button>
 
-        				</form>
+        				
 
         				<div class="modal fade" id="modalEdit{{$menu->id}}" tabindex="-1" role="dialog">
         					<div class="modal-dialog" role="document">
@@ -189,7 +214,9 @@
 
 				</form>
 
+				
 				<div class="table-responsive">
+				@if(count($tables) != 0)
           <table class="table tablesorter " id="">
             <thead class=" text-primary">
               <tr>
@@ -211,24 +238,48 @@
                 </td>
 
                 <td>
-                {{ $table->created_at->format('l, d F Y H:i') }}
+                {{ $table->created_at->format('l, d F Y') }}
                 </td>
 
                 <td>
-                  <form method="post" action="{{ route('table.destroy', $table)}}" autocomplete="off">
+               
+                  <button type="button" class="btn btn-simple btn-sm btn-danger mr-1 mb-1 mb-md-0" data-toggle="modal" data-target="#hapusMeja{{$table->id}}">
+        		         <i class="tim-icons icon-trash-simple"></i>
+        		   </button>
+      
+                    <div class="modal fade" id="hapusMeja{{$table->id}}" tabindex="-1" role="dialog">
+        					<div class="modal-dialog" role="document">
+        						<div class="modal-content" style="background-color:#212529;">
+        							<div class="modal-header">
+        								<h5 class="modal-title text-white text-uppercase">
+                                                   <i class="tim-icons icon-alert-circle-exc" style="margin-top:-4px;"></i> Peringatan
+                                               </h5>
+        							</div>
+        							<div class="modal-body">
+      
+                                          <p class="text-white">Yakin ingin menghapus meja ini, penghapusan ini bersifat permanen!</p>
+      
+                                              <form method="post" action="{{ route('table.destroy', $table)}}" autocomplete="off">
 
-        					@csrf
-        					@method('delete')
+        					                        @csrf
+        					                        @method('delete')
 
-        					<button type="submit" class="btn btn-simple btn-sm btn-danger mr-1">
-        						<i class="tim-icons icon-trash-simple"></i>
-        					</button>
+        					                        <button type="submit" class="btn btn-simple btn-sm btn-success float-right">
+        					                           	Yakin
+        					                        </button>
+        					
+        				                     </form>
+      
+                                       </div>
+        						</div>
+        					</div>
+        				</div>
 
-        					<button type="button" class="btn btn-sm btn-simple btn-info mt-1 mt-md-0" data-toggle="modal" data-target="#editMeja{{$table->id}}">
+                  
+      
+                        <button type="button" class="btn btn-sm btn-simple btn-info" data-toggle="modal" data-target="#editMeja{{$table->id}}">
         						<i class="tim-icons icon-pencil"> </i>
         					</button>
-
-        				</form>
 
         				<div class="modal fade" id="editMeja{{$table->id}}" tabindex="-1" role="dialog">
         					<div class="modal-dialog" role="document">
@@ -272,8 +323,11 @@
      				{{ $tables->links() }}
      			</div>
      		</div>
-
+				  @else
+			           <div class="text-center mt-2"> Tidak Ada Data Untuk di Tampilkan</div>
+		            @endif
         </div>
+		            
 
 			</div>
 		</div>

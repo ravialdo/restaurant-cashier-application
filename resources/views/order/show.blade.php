@@ -43,8 +43,8 @@
             <div class="card-body">
                
                <div class="form-group">
-                   <label>Nama Jenis Kelamin</label>
-                   <input type="text" class="form-control text-white" value="{{ $order->customer->gender == 1 ? 'Laki - Laki' : 'Perempuan' }}" readonly>
+                   <label>Jenis Kelamin</label>
+                   <input type="text" class="form-control text-white" value="{{ $order->customer->gender_id == 1 ? 'Laki - Laki' : 'Perempuan' }}" readonly>
                 </div>
                
                <div class="form-group">

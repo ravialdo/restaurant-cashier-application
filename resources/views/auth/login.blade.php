@@ -1,4 +1,4 @@
-@extends('layouts.app', ['class' => 'login-page', 'page' => __('Login Page'), 'contentClass' => 'login-page'])
+@extends('layouts.app', ['class' => 'login-page', 'page' => __('login'), 'contentClass' => 'login-page'])
 
 @section('content')
     <div class="col-md-10 text-center ml-auto mr-auto">

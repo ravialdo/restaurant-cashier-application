@@ -76,7 +76,13 @@ class TableController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Table::find($id)->update([
+              'table_name' => $request->nomor_meja
+         ]);
+         
+         alert()->success('Data Berhasil di Ubah!', 'Berhasil!')->persistent('Tutup');
+         
+          return redirect()->back();
     }
 
     /**

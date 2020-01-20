@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
 
+use Alert;
+
 class ProfileController extends Controller
 {
     /**
@@ -28,7 +30,9 @@ class ProfileController extends Controller
     {
         auth()->user()->update($request->all());
 
-        return back()->withStatus(__('Profile successfully updated.'));
+        alert()->success('Data Berhasil Diubah!', 'Berhasil!')->persistent('OK');
+
+        return back();
     }
 
     /**
@@ -40,7 +44,9 @@ class ProfileController extends Controller
     public function password(PasswordRequest $request)
     {
         auth()->user()->update(['password' => Hash::make($request->get('password'))]);
-
-        return back()->withPasswordStatus(__('Password successfully updated.'));
+        
+        alert()->success('Password Berhasil Diubah!', 'Berhasil!')->persistent('OK');
+        
+        return back();
     }
 }

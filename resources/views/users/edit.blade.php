@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => __('User Management'), 'pageSlug' => 'users'])
+@extends('layouts.app', ['page' => __('Kelola Pengguna'), 'pageSlug' => 'users'])
 
 @section('content')
     <div class="container-fluid mt--7">
@@ -8,7 +8,7 @@
                     <div class="card-header">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">{{ __('User Management') }}</h3>
+                                <h3 class="mb-0">{{ __('Kelola Pengguna') }}</h3>
                             </div>
                             <div class="col-4 text-right">
                                 <a href="{{ route('user.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>

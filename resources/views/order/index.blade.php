@@ -1,4 +1,4 @@
-@extends('layouts.app', ['pageSlug' => 'customer', 'page' => __('Kelola Pesanan')])
+@extends('layouts.app', ['pageSlug' => 'order', 'page' => __('Kelola Pesanan')])
 
 @section('content')
 
@@ -35,12 +35,12 @@
       
                         <div class="form-group">						
 						<select name="nomor_meja" class="form-control">																														
-							@if(count($tables) >= 0)
+							@if(count($tables) <= 0)
                                    <option value="">Nomor Meja Tidak Tersedia</option>
                                      @else
 						    <option value="">Pilih Nomor Meja</option>
                                     @foreach($tables as $table)
-							<option value="{{ $table->id }}">{{ $table->table_name }}</option>
+							<option value="{{ $table->table_name }}">{{ $table->table_name }}</option>
 							@endforeach
                                    @endif	
 						</select>
@@ -48,7 +48,7 @@
       
                           <div class="form-group">				
 						<select  name="jenis_kelamin" class="form-control">
-                                    @if(count($genders) >= 0)
+                                    @if(count($genders) <= 0)
                                    <option value="">Jenis Kelamin Tidak Tersedia</option>
                                      @else
 						    <option value="">Pilih Jenis Kelamin</option>
@@ -221,28 +221,18 @@
                         <div class="form-group">						
 						<select name="nomor_meja" class="form-control">																														
 							<option value="">Pilih Nomor Meja</option>
-							<option value="Meja 1">Meja 1</option>
-							<option value="Meja 2">Meja 2</option>
-							<option value="Meja 3">Meja 3</option>
-							<option value="Lesehan 1">Lesehan 1</option>
-							<option value="Lesehan 2">Lesehan 2</option>
+							@foreach($tables as $table)
+							<option value="{{ $table->table_name }}" {{ $table->table_name == $order->customer->table_number ? 'selected' : '' }}>{{ $table->table_name }}</option>
+							@endforeach
 						</select>
 					</div>
       
                           <div class="form-group">				
 						<select  name="jenis_kelamin" class="form-control">
 							<option value="">Pilih Jenis Kelamin</option>
-							@if($order->customer->gender == 1)
-							   <option value="{{ $order->customer->gender }}" selected> Laki - Laki  </option>
-							@elseif($order->customer->gender == 0)
-							   <option value="{{ $order->customer->gender }}" selected>Perempuan</option>	
-							@endif
-														
-							@if($order->customer->gender != 1)
-								<option value="1">Laki - Laki</option>
-							@else
-								<option value="0">Perempuan</option>	
-							@endif													
+							@foreach($genders as $gender)
+							<option value="{{ $gender->id }}" {{ $gender->id == $order->customer->gender_id ? 'selected' : '' }}>{{ $gender->gender_name }}</option>
+							@endforeach
 					</select>
 					</div>
 

@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => __('User Management'), 'pageSlug' => 'users'])
+@extends('layouts.app', ['page' => __('Kelola Pengguna'), 'pageSlug' => 'users'])
 
 @section('content')
     <div class="row">
@@ -7,10 +7,10 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">{{ __('Users') }}</h4>
+                            <h4 class="card-title">{{ __('Pengguna') }}</h4>
                         </div>
                         <div class="col-4 text-right">
-                            <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">{{ __('Add user') }}</a>
+                            <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">{{ __('Tambah') }}</a>
                         </div>
                     </div>
                 </div>
@@ -18,11 +18,11 @@
                     @include('alerts.success')
 
                     <div class="">
-                        <table class="table tablesorter " id="">
+                        <table class="table table-responsive-sm" id="">
                             <thead class=" text-primary">
-                                <th scope="col">{{ __('Name') }}</th>
+                                <th scope="col">{{ __('Nama') }}</th>
                                 <th scope="col">{{ __('Email') }}</th>
-                                <th scope="col">{{ __('Creation Date') }}</th>
+                                <th scope="col">{{ __('Dibuat') }}</th>
                                 <th scope="col"></th>
                             </thead>
                             <tbody>

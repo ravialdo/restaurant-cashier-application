@@ -9,6 +9,16 @@ use App\Table;
 
 class MenuController extends Controller
 {
+	
+	public function __construct(){
+		
+		$this->middleware([
+			'auth',
+			'level:kasir',
+			'level:owner'
+		]);
+		
+	}
     /**
      * Display a listing of the resource.
      *

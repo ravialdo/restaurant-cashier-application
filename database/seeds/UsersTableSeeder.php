@@ -13,7 +13,6 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'id' => 1,
             'name' => 'Admin Admin',
             'email' => 'admin@black.com',
             'email_verified_at' => now(),
@@ -22,8 +21,38 @@ class UsersTableSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
+	  DB::table('users')->insert([
+            'name' => 'Waiter',
+            'email' => 'waiter@black.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('secret'),
+		   'level' => 'waiter',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+	   DB::table('users')->insert([
+            'name' => 'Cashier',
+            'email' => 'cashier@black.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('secret'),
+		   'level' => 'cashier',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
       
-        /* DB::table('genders')->insert([
+	  DB::table('users')->insert([
+            'name' => 'Owner',
+            'email' => 'owner@black.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('secret'),
+		   'level' => 'owner',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        DB::table('genders')->insert([
             'gender_name' => 'Laki - Laki',
             'created_at' => now(),
             'updated_at' => now()
@@ -33,7 +62,7 @@ class UsersTableSeeder extends Seeder
             'gender_name' => 'Perempuan',
             'created_at' => now(),
             'updated_at' => now()
-         ]); */
+         ]); 
 
 	}
 }

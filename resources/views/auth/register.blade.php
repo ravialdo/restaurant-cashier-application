@@ -1,15 +1,16 @@
-@extends('layouts.app', ['class' => 'register-page', 'page' => __('Register Page'), 'contentClass' => 'register-page'])
+@extends('layouts.app', ['class' => 'register-page', 'page' => __('register'), 'contentClass' => 'register-page'])
 
 @section('content')
-    <div class="row">
-        <div class="col-md-5 ml-auto">
-        <div class="col-md-7 mr-auto">
-            <div class="card card-register card-white">
-                <div class="card-header">
-                    <img class="card-img" src="{{ asset('black') }}/img/card-primary.png" alt="Card image">
-                    <h4 class="card-title">{{ __('Register') }}</h4>
-                </div>
-                <form class="form" method="post" action="{{ route('register') }}">
+
+	<div class="row justify-content-center">
+		<div class="col-md-5">
+		
+			<div class="card card-register card-white">
+				<div class="card-header">
+					<img class="card-img" src="{{ asset('black') }}/img/card-primary.png" alt="Card image">
+                   		<h1 class="card-title mt-5"></h1>
+				</div>
+				<form class="form" method="post" action="{{ route('register') }}">
                     @csrf
 
                     <div class="card-body">
@@ -22,6 +23,15 @@
                             <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}">
                             @include('alerts.feedback', ['field' => 'name'])
                         </div>
+					<div class="form-group {{ $errors->has('level') ? ' has-danger' : '' }}">											
+						<select  name="level" class="form-control">
+							<option value="">Pilih Level</option>
+							<option value="administrator">Administrator</option>
+							<option value="owner">Owner</option>
+							<option value="cashier">Cashier</option>
+							<option value="waiter">Waiter</option>
+						</select>
+					</div>
                         <div class="input-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
@@ -61,7 +71,10 @@
                         <button type="submit" class="btn btn-primary btn-round">{{ __('DAFTAR') }}</button>
                     </div>
                 </form>
-            </div>
-        </div>
-    </div>
+				
+			</div>
+		
+		</div>
+	</div>
+	
 @endsection

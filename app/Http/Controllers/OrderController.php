@@ -53,7 +53,7 @@ class OrderController extends Controller
         $customer = Customer::create([
             'customer_name' => $request->nama_pelanggan,
             'table_number' => $request->nomor_meja,
-            'gender' => $request->jenis_kelamin,
+            'gender_id' => $request->jenis_kelamin,
             'number_phone' => $request->nomor_hp,
             'address' => $request->alamat
          ]);
@@ -115,7 +115,7 @@ class OrderController extends Controller
 	   $order->customer()->update([
 			'customer_name' => $request->nama_pelanggan,
 			'table_number' => $request->nomor_meja,
-			'gender' => $request->jenis_kelamin,
+			'gender_id' => $request->jenis_kelamin,
 			'number_phone' => $request->nomor_hp,
 			'address' => $request->alamat
 	   ]);
