@@ -19,14 +19,7 @@
                 </a>
             </li>
 		@endif
-		@if(auth()->user()->level != 'administrator')
-		<li @if ($pageSlug == 'report') class="active " @endif>
-                <a href="{{ route('transaction.index') }}">
-                    <i class="tim-icons icon-paper"></i>
-                    <p>{{ __('Buat Laporan') }}</p>
-                </a>
-            </li>
-		@endif
+		
 		@if(auth()->user()->level == 'waiter')
             <li @if ($pageSlug == 'order') class="active " @endif>
                 <a href="{{ route('order.index') }}">
@@ -35,14 +28,7 @@
                 </a>
             </li>
 		@endif
-		@if(auth()->user()->level != 'owner')
-		   <li @if ($pageSlug == 'customer') class="active " @endif>
-                <a href="{{ route('customer.index') }}">
-                    <i class="tim-icons icon-satisfied"></i>
-                    <p>{{ __('Kelola Pelanggan') }}</p>
-                </a>
-            </li>
-		@endif
+		
 		@if(auth()->user()->level == 'administrator' || auth()->user()->level == 'waiter')
 			<li @if ($pageSlug == 'menu') class="active " @endif>
                 <a href="{{ route('menu.index') }}">
@@ -77,6 +63,14 @@
                 </div>
             </li>
             @endif
+		 @if(auth()->user()->level != 'administrator')
+		<li @if ($pageSlug == 'report') class="active " @endif>
+                <a href="{{ route('transaction.index') }}">
+                    <i class="tim-icons icon-paper"></i>
+                    <p>{{ __('Buat Laporan') }}</p>
+                </a>
+            </li>
+		@endif
         </ul>
     </div>
 </div>
